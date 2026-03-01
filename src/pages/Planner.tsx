@@ -208,14 +208,19 @@ export default function Planner() {
               </h3>
               <form onSubmit={addTask} className="flex gap-2 mb-3">
                 <input
-                  value={todoInput}
-                  onChange={e => setTodoInput(e.target.value)}
-                  placeholder="Add a new project..."
-                  className="flex-1 p-2 rounded-md bg-gray-700 left-2 text-white border-none outline-none focus:ring-2 focus:ring-purple-500 text-sm"
-                />
-                <button type="submit" className="bg-purple-600 hover:bg-purple-700 text-white p-2 rounded-md transition-colors">
-                  <i className="fas fa-plus" />
-                </button>
+    value={todoInput}
+    onChange={e => setTodoInput(e.target.value)}
+    placeholder="New project..."
+    
+    className="w-[80%] p-2 rounded-md bg-gray-700 text-white border-none outline-none focus:ring-2 focus:ring-purple-500 text-sm min-w-0"
+  />
+  <button 
+    type="submit" 
+    
+    className="flex-1 flex-shrink-0 bg-purple-600 hover:bg-purple-700 text-white p-2 rounded-md transition-colors flex items-center justify-center min-w-[40px]"
+  >
+    <i className="fas fa-plus" />
+  </button>
               </form>
               {/* Filter tabs */}
               <div className="flex gap-3 mb-3 text-sm">
