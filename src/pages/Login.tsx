@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { auth, googleProvider, githubProvider } from '../firebase';
+import { signInWithPopup } from 'firebase/auth';
 
 export default function Login() {
   const navigate = useNavigate()
@@ -30,6 +32,26 @@ export default function Login() {
     }
   }
 
+  const handleSocialLogin = async (provider: any) => {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    // We store the essential info in localStorage so your 
+    // existing dashboard logic can still access it.
+    localStorage.setItem('user', JSON.stringify({
+      name: user.displayName,
+      email: user.email,
+      photo: user.photoURL // Now you can show their real DP!
+    }));
+    localStorage.setItem('loggedIn', 'true');
+
+    navigate('/');
+  } catch (err: any) {
+    console.error("Auth Error:", err.code);
+    setError("Social login failed. Please try again.");
+  }
+};
   return (
     <div
       className="min-h-screen flex items-center justify-center p-4"
@@ -61,13 +83,27 @@ export default function Login() {
             className="bg-white flex flex-col items-center justify-center h-full px-6 md:px-10 gap-3"
           >
             <h1 className="text-2xl font-bold text-gray-800">Register With</h1>
-            <div className="flex gap-2 my-2">
-              {['google-plus-g', 'facebook-f', 'github', 'linkedin-in'].map(icon => (
-                <a key={icon} href="#" className="w-10 h-10 border border-gray-400 rounded-lg flex items-center justify-center hover:border-purple-600 transition-colors">
-                  <i className={`fa-brands fa-${icon} text-purple-700`} />
-                </a>
-              ))}
-            </div>
+            <div className="flex gap-4 my-2">
+  {/* Google Login Button */}
+  <button 
+    type="button" 
+    onClick={() => handleSocialLogin(googleProvider)}
+    className="w-10 h-10 border border-gray-400 rounded-lg flex items-center justify-center hover:border-purple-600 transition-all bg-white shadow-sm"
+    title="Login with Google"
+  >
+    <i className="fa-brands fa-google text-red-500 text-lg" />
+  </button>
+
+  {/* GitHub Login Button */}
+  <button 
+    type="button" 
+    onClick={() => handleSocialLogin(githubProvider)}
+    className="w-10 h-10 border border-gray-400 rounded-lg flex items-center justify-center hover:border-purple-600 transition-all bg-white shadow-sm"
+    title="Login with GitHub"
+  >
+    <i className="fa-brands fa-github text-black text-lg" />
+  </button>
+</div>
             <hr className="w-full" />
             <span className="text-sm font-bold text-gray-600">OR</span>
             <hr className="w-full" />
@@ -104,13 +140,27 @@ export default function Login() {
             className="bg-white flex flex-col items-center justify-center h-full px-6 md:px-10 gap-3"
           >
             <h1 className="text-2xl font-bold text-gray-800">Login With</h1>
-            <div className="flex gap-2 my-2">
-              {['google-plus-g', 'facebook-f', 'github', 'linkedin-in'].map(icon => (
-                <a key={icon} href="#" className="w-10 h-10 border border-gray-400 rounded-lg flex items-center justify-center hover:border-purple-600 transition-colors">
-                  <i className={`fa-brands fa-${icon} text-purple-700`} />
-                </a>
-              ))}
-            </div>
+            <div className="flex gap-4 my-2">
+  {/* Google Login Button */}
+  <button 
+    type="button" 
+    onClick={() => handleSocialLogin(googleProvider)}
+    className="w-10 h-10 border border-gray-400 rounded-lg flex items-center justify-center hover:border-purple-600 transition-all bg-white shadow-sm"
+    title="Login with Google"
+  >
+    <i className="fa-brands fa-google text-red-500 text-lg" />
+  </button>
+
+  {/* GitHub Login Button */}
+  <button 
+    type="button" 
+    onClick={() => handleSocialLogin(githubProvider)}
+    className="w-10 h-10 border border-gray-400 rounded-lg flex items-center justify-center hover:border-purple-600 transition-all bg-white shadow-sm"
+    title="Login with GitHub"
+  >
+    <i className="fa-brands fa-github text-black text-lg" />
+  </button>
+</div>
             <hr className="w-full" />
             <span className="text-sm font-bold text-gray-600">OR</span>
             <hr className="w-full" />

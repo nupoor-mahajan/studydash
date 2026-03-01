@@ -4,12 +4,13 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-  "dev": "vite",
-  "build": "npx tsc && npx vite build",
-  "preview": "vite preview"
-},
+    "dev": "vite",
+    "build": "npx tsc && npx vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "chart.js": "^4.4.0",
+    "firebase": "^12.10.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
