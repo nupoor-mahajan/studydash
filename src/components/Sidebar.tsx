@@ -43,10 +43,6 @@ export default function Sidebar() {
         />
       )}
 
-      {/* STABILITY & HEIGHT FIX: 
-          'md:sticky top-0' + 'h-screen' ensures the sidebar spans the full viewport 
-          and stays visible while the main content scrolls.
-      */}
       <div
         className={`
           fixed md:sticky top-0 h-screen bg-brand-purple text-white p-4 flex flex-col z-40
@@ -55,19 +51,40 @@ export default function Sidebar() {
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
         `}
       >
-        {/* TOGGLE BUTTON: 
-            Centered on the edge (-right-3) with a squarish (rounded-md) shape.
-        */}
+        {/* TOGGLE BUTTON */}
         <button
           className="hidden md:flex absolute top-10 -right-3 w-6 h-6 bg-brand-purple border border-white/20 rounded-md items-center justify-center text-white text-xs shadow-xl z-50 cursor-pointer hover:scale-110 transition-transform"
           onClick={() => setCollapsed(!collapsed)}
         >
           <i className={`fas fa-chevron-${collapsed ? 'right' : 'left'}`} />
         </button>
+            
+        {/* LOGO SECTION: Icon on left, Text on right */}
+        <div 
+          className={`flex items-center mb-8 mt-2 overflow-hidden transition-all duration-300 ${collapsed ? 'justify-center' : 'px-2'}`}
+          onClick={() => navigate('/')}
+          style={{ cursor: 'pointer' }}
+        >
+          <div className="shrink-0">
+            <img 
+              src="/logo1.png" 
+              alt="StudyDash Icon" 
+              // We use a smaller width for just the icon part
+              className="w-12 h-12 object-contain mix-blend-mode-multiply brightness-125" 
+            />
+          </div>
+          {!collapsed && (
+            <div className="ml-3">
+              <h1 className="text-xl font-bold tracking-tight whitespace-nowrap">
+                Study<span className="text-green-400">Dash</span>
+              </h1>
+            </div>
+          )}
+        </div>
 
         {/* Profile Section */}
-        <div className={`mb-10 mt-2 flex items-center transition-all duration-300 ${collapsed ? 'justify-center' : 'px-2'}`}>
-          <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-xl shrink-0">
+        <div className={`mb-10 flex items-center transition-all duration-300 ${collapsed ? 'justify-center' : 'px-2'}`}>
+          <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-xl shrink-0 border border-white/5">
             👤
           </div>
           {!collapsed && (

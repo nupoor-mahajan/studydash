@@ -133,6 +133,12 @@ export default function Login() {
               className="toggle-panel toggle-left"
               style={{ transform: isActive ? 'translateX(0)' : 'translateX(-200%)' }}
             >
+              <img 
+  src="/logo.png" 
+  alt="StudyDash Logo" 
+  // 'mix-blend-mode-multiply' tells the browser to treat white as transparent
+  className="w-90 h-auto mb-6 object-contain mix-blend-mode-multiply" 
+/>
               <h1 className="text-2xl font-bold mb-3">Welcome Back!</h1>
               <p className="text-sm mb-5 px-4">Provide your personal details to use all features</p>
               <button
@@ -148,6 +154,13 @@ export default function Login() {
               className="toggle-panel toggle-right"
               style={{ right: 0, transform: isActive ? 'translateX(200%)' : 'translateX(0)' }}
             >
+              
+              <img 
+  src="/logo.png" 
+  alt="StudyDash Logo" 
+  // 'mix-blend-mode-multiply' tells the browser to treat white as transparent
+  className="w-90 h-auto mb-6 object-contain mix-blend-mode-multiply" 
+/>
               <h1 className="text-2xl font-bold mb-3">Hello!</h1>
               <p className="text-sm mb-5 px-4">Register to use all features in our site</p>
               <button
