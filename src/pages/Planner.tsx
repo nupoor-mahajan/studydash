@@ -409,19 +409,25 @@ export default function Planner() {
                 </div>
               ))}
             </div>
-            <form onSubmit={addHabit} className="flex gap-2">
-              <input
-                value={newHabitInput}
-                onChange={e => setNewHabitInput(e.target.value)}
-                type="text"
-                placeholder="New habit name..."
-                required
-                className="flex-1 p-2 rounded-xl bg-gray-700 text-white outline-none focus:ring-2 focus:ring-purple-500 text-sm"
-              />
-              <button type="submit" className="bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded-xl transition-colors text-sm">
-                <i className="fas fa-plus" /> Add
-              </button>
-            </form>
+            <form onSubmit={addHabit} className="flex items-center gap-2 w-full">
+  <input
+    value={newHabitInput}
+    onChange={e => setNewHabitInput(e.target.value)}
+    type="text"
+    placeholder="New habit..."
+    required
+    
+    className="w-[70%] p-2 rounded-xl bg-gray-700 text-white outline-none focus:ring-2 focus:ring-purple-500 text-sm min-w-0"
+  />
+  <button 
+    type="submit" 
+    
+    className="flex-1 flex-shrink-0 whitespace-nowrap bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded-xl transition-colors text-sm flex items-center justify-center gap-1"
+  >
+    <i className="fas fa-plus" /> 
+    <span>Add</span>
+  </button>
+</form>
             <button
               onClick={() => setHabitModalOpen(false)}
               className="w-full bg-gray-600 hover:bg-gray-500 text-white py-2 rounded-xl transition-colors text-sm"
