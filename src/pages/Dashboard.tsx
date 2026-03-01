@@ -105,12 +105,35 @@ export default function Dashboard() {
     <Layout>
       <div>
         {/* Navbar */}
-        <nav className="flex items-center justify-between px-4 py-3 border-b border-white/20 backdrop-blur-sm mb-6">
-          <h2 className="text-xl font-bold text-white flex items-center gap-2">
-            <i className="fas fa-home" /> My Dashboard
-          </h2>
-          <span className="text-white/80 text-sm">{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
-        </nav>
+        <nav className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-4 py-3 border-b border-white/20 backdrop-blur-sm mb-6 gap-2 sm:gap-0">
+  {/* Title Section */}
+  <h2 className="text-lg md:text-xl font-bold text-white flex items-center gap-2 whitespace-nowrap">
+    <i className="fas fa-home" /> 
+    <span>My Dashboard</span>
+  </h2>
+
+  {/* Date Section */}
+  <div className="text-white/80 text-xs md:text-sm font-medium">
+    {/* Full date on Tablet/Desktop */}
+    <span className="hidden sm:inline">
+      {new Date().toLocaleDateString('en-US', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      })}
+    </span>
+    
+    {/* Short date on Mobile to save space */}
+    <span className="inline sm:hidden">
+      {new Date().toLocaleDateString('en-US', { 
+        month: 'short', 
+        day: 'numeric', 
+        year: 'numeric' 
+      })}
+    </span>
+  </div>
+</nav>
 
         <div className="px-2">
           {/* Row 1: Quote + Hours */}

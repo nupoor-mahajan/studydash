@@ -211,9 +211,9 @@ export default function Planner() {
                   value={todoInput}
                   onChange={e => setTodoInput(e.target.value)}
                   placeholder="Add a new project..."
-                  className="flex-1 p-2 rounded-xl bg-gray-700 text-white border-none outline-none focus:ring-2 focus:ring-purple-500 text-sm"
+                  className="flex-1 p-2 rounded-md bg-gray-700 left-2 text-white border-none outline-none focus:ring-2 focus:ring-purple-500 text-sm"
                 />
-                <button type="submit" className="bg-purple-600 hover:bg-purple-700 text-white p-2 rounded-xl transition-colors">
+                <button type="submit" className="bg-purple-600 hover:bg-purple-700 text-white p-2 rounded-md transition-colors">
                   <i className="fas fa-plus" />
                 </button>
               </form>
