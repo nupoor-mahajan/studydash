@@ -29,7 +29,7 @@ export default function Sidebar() {
     <>
       {/* Mobile hamburger */}
       <button
-        className="md:hidden fixed top-4 left-4 z-50 text-white bg-brand-purple p-2 rounded-lg shadow-lg"
+        className="md:hidden fixed top-3 left-1 z-50 text-white bg-none p-2 rounded-lg shadow-lg"
         onClick={() => setMobileOpen(!mobileOpen)}
       >
         <i className={`fas ${mobileOpen ? 'fa-times' : 'fa-bars'}`} />
